@@ -17,7 +17,9 @@ pip install -r requirements.txt
 
 We present FairGenMed, the first dataset for studying fairness of medical generative models, providing detailed quantitative measurements of multiple clinical conditions to investigate the semantic correlation between text prompts and anatomical regions across various demographic subgroups.
 
-The dataset can be accessed via this [link](https://drive.google.com/drive/folders/16VCgkvMdCM7UFRlhTlEa0oV2lxCho6Al?usp=sharing). This dataset can only be used for non-commercial research purposes. At no time, the dataset shall be used for clinical decisions or patient care. The data use license is [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+The dataset can be accessed via this [link](https://drive.google.com/drive/folders/16VCgkvMdCM7UFRlhTlEa0oV2lxCho6Al?usp=sharing). This dataset can only be used for non-commercial research purposes. At no time, the dataset shall be used for clinical decisions or patient care. The data use license is [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). If you have any questions, please email <harvardophai@gmail.com>.
+
+Note that, the modifier word “Harvard” only indicates that our dataset is from the Department of Ophthalmology of Harvard Medical School and does not imply an endorsement, sponsorship, or assumption of responsibility by either Harvard University or Harvard Medical School as a legal identity.
 
 Our dataset includes 10,000 subjects for glaucoma detection with comprehensive demographic identity attributes including age, gender, race, ethnicity, preferred language, and marital status. Each subject has one Scanning Laser Ophthalmoscopy (SLO) fundus photo and one npz file. The size of SLO fundus photos is 512 x 664.
 
