@@ -211,7 +211,8 @@ class FairGenMed(Dataset):
 
         self.mapping_md_severity = {'normal': 0, 'mild': 1, 'moderate': 2, 'severe': 3}
         self.mapping_cdr_status = {'normal': 0, 'borderline': 1, 'abnormal': 2}
-        self.mapping_se_status = {'hyperopia': 0, 'emmetropia': 1, 'myopia': 2}
+        # self.mapping_se_status = {'hyperopia': 0, 'emmetropia': 1, 'myopia': 2}
+        self.mapping_se_status = {'positive': 0, 'neutral': 1, 'negative': 2}
         self.mapping_rnflt_status = {'low': 0, 'medium': 1, 'high': 2}
 
         parent_dir = os.path.dirname(self.data_path)
@@ -220,7 +221,7 @@ class FairGenMed(Dataset):
         file_names = raw_meta['filename'].tolist()
         dict_md_severity = dict(zip(file_names, [self.mapping_md_severity[x] for x in raw_meta['md_severity'].tolist()]))
         dict_cdr_status = dict(zip(file_names, [self.mapping_cdr_status[x] for x in raw_meta['cdr_status'].tolist()]))
-        dict_se_status = dict(zip(file_names, [self.mapping_se_status[x] for x in raw_meta['se_status'].tolist()]))
+        dict_se_status = dict(zip(file_names, [self.mapping_se_status[x] for x in raw_meta['near_vision_refraction_stage'].tolist()]))
         dict_rnflt_status = dict(zip(file_names, [self.mapping_rnflt_status[x] for x in raw_meta['rnflt_status'].tolist()]))
         self.label_dict = {'md_severity': dict_md_severity,
                             'cdr_status': dict_cdr_status,
@@ -228,7 +229,7 @@ class FairGenMed(Dataset):
                             'rnflt_status': dict_rnflt_status}
         dict_md_severity_str = dict(zip(file_names, [x+' vision loss' for x in raw_meta['md_severity'].tolist()]))
         dict_cdr_status_str = dict(zip(file_names, [x+' cup-disc ratio' for x in raw_meta['cdr_status'].tolist()]))
-        dict_se_status_str = dict(zip(file_names, [x for x in raw_meta['se_status'].tolist()]))
+        dict_se_status_str = dict(zip(file_names, [x for x in raw_meta['near_vision_refraction_stage'].tolist()]))
         dict_rnflt_status_str = dict(zip(file_names, [x for x in raw_meta['rnflt_status'].tolist()]))
         self.label_dict_str = {'md_severity': dict_md_severity_str,
                             'cdr_status': dict_cdr_status_str,

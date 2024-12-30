@@ -159,7 +159,7 @@ def compute_groupwise_metrics(args):
     output_tmpdir = os.path.join(os.path.dirname(args.model_path), f'metrics_calculation_{args.metrics_calculation_idx}_tmp')
 
     # demographic_groups = ['Asian', 'Black', 'White', 'Female', 'Male', 'Non-Hispanic', ' Hispanic', 'with Glaucoma', 'without Glaucoma']
-    demographic_groups = [' Asian', ' Black', ' White', ' Female', ' Male', ' Non-Hispanic', ' Hispanic', ' non-glaucoma', ' glaucoma', ' normal vision', ' mild vision loss', ' moderate vision loss', ' severe vision loss', ' normal cup-disc ratio', ' borderline cup-disc ratio', ' abnormal cup-disc ratio', ' hyperopia', ' emmetropia', ' myopia']
+    demographic_groups = [' Asian', ' Black', ' White', ' Female', ' Male', ' Non-Hispanic', ' Hispanic', ' non-glaucoma', ' glaucoma', ' normal vision', ' mild vision loss', ' moderate vision loss', ' severe vision loss', ' normal cup-disc ratio', ' borderline cup-disc ratio', ' abnormal cup-disc ratio', ' positive', ' neutral', ' negative']
     prompts_path = f"{output_dir}/prompts/prompts.txt"
     
     # Read prompts and categorize images

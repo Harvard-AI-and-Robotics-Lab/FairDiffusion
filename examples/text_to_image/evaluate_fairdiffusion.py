@@ -150,7 +150,7 @@ def compute_fairness_metrics(dir1, dir2):
     return {'fid': fid_metric, 'mifid': mifid_metric, 'is': inception_metric}
 
 def compute_groupwise_metrics(args):
-    demographic_groups = [' Asian', ' Black', ' White', ' Female', ' Male', ' Non-Hispanic', ' Hispanic', ' non-glaucoma', ' glaucoma', ' normal vision', ' mild vision loss', ' moderate vision loss', ' severe vision loss', ' normal cup-disc ratio', ' borderline cup-disc ratio', ' abnormal cup-disc ratio', ' hyperopia', ' emmetropia', ' myopia']
+    demographic_groups = [' Asian', ' Black', ' White', ' Female', ' Male', ' Non-Hispanic', ' Hispanic', ' non-glaucoma', ' glaucoma', ' normal vision', ' mild vision loss', ' moderate vision loss', ' severe vision loss', ' normal cup-disc ratio', ' borderline cup-disc ratio', ' abnormal cup-disc ratio', ' positive', ' neutral', ' negative']
     prompts_path = f"metrics_calculation_{args.metrics_calculation_idx}/prompts/prompts.txt"
     
     # Read prompts and categorize images
