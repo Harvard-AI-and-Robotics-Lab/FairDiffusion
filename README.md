@@ -38,20 +38,52 @@ We have compiled all clinical measurements related to the 10,000 samples into a 
 
 
 ## Experiments
-**Train Stable Diffusion**
+**Train Stable Diffusion on FairGenMed Dataset**
 ```
 cd examples/text_to_image
 export MODEL_NAME="stabilityai/stable-diffusion-2-1"
 accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR>
 ```
 
-**Train FairDiffusion**
+**Train Stable Diffusion on HAM10000 Dataset**
+```
+cd examples/text_to_image
+export MODEL_NAME="stabilityai/stable-diffusion-2-1"
+accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image_ham.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR>
+```
+
+**Train Stable Diffusion on Chexpert Dataset**
+```
+cd examples/text_to_image
+export MODEL_NAME="stabilityai/stable-diffusion-2-1"
+accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image_chexpert.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR>
+```
+
+**Train FairDiffusion on FairGenMed Dataset**
 ```
 cd examples/text_to_image
 export MODEL_NAME="stabilityai/fair-diffusion-2-1"
 export TIME_WINDOW=30
 export EXPLOITATION=0.95
-accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR> --fair_time_window ${TIME_WINDOW} --fair_exploitation_rate ${EXPLOITATION}
+accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image_proposed.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR> --fair_time_window ${TIME_WINDOW} --fair_exploitation_rate ${EXPLOITATION}
+```
+
+**Train FairDiffusion on HAM10000 Dataset**
+```
+cd examples/text_to_image
+export MODEL_NAME="stabilityai/fair-diffusion-2-1"
+export TIME_WINDOW=30
+export EXPLOITATION=0.95
+accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image_proposed_ham.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR> --fair_time_window ${TIME_WINDOW} --fair_exploitation_rate ${EXPLOITATION}
+```
+
+**Train FairDiffusion on Chexpert Dataset**
+```
+cd examples/text_to_image
+export MODEL_NAME="stabilityai/fair-diffusion-2-1"
+export TIME_WINDOW=30
+export EXPLOITATION=0.95
+accelerate launch --main_process_port 29601 --multi_gpu --num_processes 2 --mixed_precision="fp16" train_text_to_image_proposed_chexpert.py --text_encoder_type clip --dataset_dir <DATASET_DIR> --checkpointing_steps 5000 --pretrained_model_name_or_path=$MODEL_NAME --train_data_dir tmpp --datasets glaucoma --race_prompt --gender_prompt --ethnicity_prompt --use_ema --resolution=512 --center_crop --random_flip --train_batch_size=16 --gradient_accumulation_steps=1 --gradient_checkpointing --max_train_steps=100000 --learning_rate=1e-05 --max_grad_norm=1 --lr_scheduler="constant" --lr_warmup_steps=0 --output_dir=<OUTPUT_DIR> --cache_dir <CACHE_DIR> --fair_time_window ${TIME_WINDOW} --fair_exploitation_rate ${EXPLOITATION}
 ```
 
 **Visualize Diffusion Model (Generation)**
