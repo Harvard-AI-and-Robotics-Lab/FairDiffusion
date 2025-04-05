@@ -210,3 +210,17 @@ PERF_FILE=${MODEL_TYPE}_${MODALITY_TYPE}_${EXP_NAME}.csv
 python scripts/train_glaucoma_fair.py --task se_status --fairdiffusion --initial_model stabilityai/stable-diffusion-2-1 --model_path <OUTPUT_DIR>/checkpoint-<TBD>/unet --data_dir ${DATASET_DIR}/ --result_dir ${RESULT_DIR}/${MODEL_TYPE}_${MODALITY_TYPE}_${EXP_NAME} --model_type ${MODEL_TYPE} --image_size 200 --lr ${LR} --weight-decay 0. --momentum 0.1 --batch_size ${BATCH_SIZE} --epochs ${NUM_EPOCH} --modality_types ${MODALITY_TYPE} --perf_file ${PERF_FILE}
 
 ```
+
+## Citation
+If you find this project interesting or useful for your research, please cite 
+```
+@article{FairDiffusion_Science_Advances_2025,
+author = {Yan Luo  and Muhammad Osama Khan  and Congcong Wen  and Muhammad Muneeb Afzal  and Titus Fidelis Wuermeling  and Min Shi  and Yu Tian  and Yi Fang  and Mengyu Wang },
+title = {FairDiffusion: Enhancing equity in latent diffusion models via fair Bayesian perturbation},
+journal = {Science Advances},
+volume = {11},
+number = {14},
+pages = {eads4593},
+year = {2025}
+}
+```
